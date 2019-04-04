@@ -1,0 +1,16 @@
+{
+  "name": "simple-media-server",
+  "version": "1.0.0",
+  "description": "Should help me to watch video on my PS4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denis Epshtein",
+  "license": "ISC",
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<body>
+    <ul>
+    <% directories.forEach(function(directory){ %>
+        <li><a href="/<%= directory.id %>"><%= directory.name %></a></li>
+    <% }); %>
+    </ul>
+    <ul>
+    <% files.forEach(function(file){ %>
+        <li><a href="watch/<%= file.id %>"><%= file.name %></a></li>
+    <% }); %>
+    </ul>
+</body>
+
+</html>
