@@ -3,19 +3,59 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+        .mdl-layout__drawer-button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .mdl-list__item-primary-action {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
-    <ul>
-    <% directories.forEach(function(directory){ %>
-        <li><a href="/<%= directory.id %>"><%= directory.name %></a></li>
-    <% }); %>
-    </ul>
-    <ul>
-    <% files.forEach(function(file){ %>
-        <li><a href="watch/<%= file.id %>"><%= file.name %></a></li>
-    <% }); %>
-    </ul>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div role="button" tabindex="0" class="mdl-layout__drawer-button">
+                <a href="/<%= parentId %>"><i class="material-icons">arrow_back</i></a>
+            </div>
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title"><%= title %></span>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content">
+            <div class="mdl-list">
+            <% directories.forEach(function(directory){ %>
+                <div class="mdl-list__item">
+                    <div class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">folder</i>
+                        <a class="mdl-list__item-primary-action" href="/<%= directory.id %>"><%= directory.name %></a>
+                    </div>
+                </div>
+            <% }); %>
+            </div>
+
+            <div class="mdl-list">
+            <% files.forEach(function(file){ %>
+                <div class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">play_arrow</i>
+                        <a class="mdl-list__item-primary-action" href="watch/<%= file.id %>"><%= file.name %></a>
+                    </span>
+                </div>
+            <% }); %>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>

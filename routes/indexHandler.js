@@ -27,6 +27,6 @@ module.exports = (req, res) => {
             }
         })
 
-        res.render('index', { files, directories })
+        res.render('index', { files, directories, title: directory.name, parentId: directory.parentId })
     })
 }

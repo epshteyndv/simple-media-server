@@ -18,6 +18,6 @@ module.exports = (req, res) => {
             return res.end(err);
         }
         
-        res.render('watch', { fileId: fileId })
+        res.render('watch', { fileId: fileId, title: file.name, parentId: file.parentId })
     });
 }

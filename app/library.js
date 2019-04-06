@@ -4,17 +4,23 @@ const base64url = require('base64url')
 module.exports = rootDirectory => {
     return {
         getItem: id => {
-            var virtualPath = ""
+            var relativePath = ""
             var physicalPath = rootDirectory
+            var parentId = ""
 
             if (id) {
-                virtualPath = base64url.decode(id)
-                physicalPath = path.resolve(rootDirectory, virtualPath)
+                physicalPath = path.join(rootDirectory, base64url.decode(id))
+                relativePath = path.relative(rootDirectory, physicalPath);
+                parentId = base64url.encode(path.dirname(relativePath))
             }
 
+            var name = path.basename(physicalPath)
+
             return {
-                physicalPath: physicalPath,
-                getIdFor: name => base64url.encode(path.join(virtualPath, name))
+                name,
+                physicalPath,
+                parentId,
+                getIdFor: e => base64url.encode(path.join(relativePath, e))
             }
         }
     }
